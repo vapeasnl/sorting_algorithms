@@ -29,31 +29,31 @@ void swap_ints(int *a, int *b)
  *
  * Return: The final partition index.
  *
- * Description: Uses the last element of the partition as the pivot.
+ * Description: Uses the last element of the partition as the flip.
  * Prints the array after each swap of two elements.
  */
 int hoare_partition(int *array, size_t size, int left, int right)
 {
-	int pivot, above, below;
+	int flip, up, down;
 
-	pivot = array[right];
-	for (above = left - 1, below = right + 1; above < below;)
+	flip = array[right];
+	for (up = left - 1, down = right + 1; up < down;)
 	{
 		do {
-			above++;
-		} while (array[above] < pivot);
+			up++;
+		} while (array[up] < flip);
 		do {
-			below--;
-		} while (array[below] > pivot);
+			down--;
+		} while (array[down] > flip);
 
-		if (above < below)
+		if (up < down)
 		{
-			swap_ints(array + above, array + below);
-			array_print(array, size);
+			swap_ints(array + up, array + down);
+			print_array(array, size);
 		}
 	}
 
-	return (above);
+	return (up);
 }
 
 /**
@@ -67,13 +67,13 @@ int hoare_partition(int *array, size_t size, int left, int right)
  */
 void hoare_sort(int *array, size_t size, int left, int right)
 {
-	int part;
+	int prt;
 
 	if (right - left > 0)
 	{
-		part = hoare_partition(array, size, left, right);
-		hoare_sort(array, size, left, part - 1);
-		hoare_sort(array, size, part, right);
+		prt = hoare_partition(array, size, left, right);
+		hoare_sort(array, size, left, prt - 1);
+		hoare_sort(array, size, prt, right);
 	}
 }
 

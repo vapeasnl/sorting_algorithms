@@ -23,24 +23,24 @@ void swap_ints(int *a, int *b)
  */
 void s_bubble(int *array, size_t size)
 {
-	size_t i, len = size;
-	bool bubbly = false;
+	size_t i, l = size;
+	bool bub = false;
 
 	if (array == NULL || size < 2)
 		return;
 
-	while (bubbly == false)
+	while (bub == false)
 	{
-		bubbly = true;
-		for (i = 0; i < len - 1; i++)
+		bub = true;
+		for (i = 0; i < l - 1; i++)
 		{
 			if (array[i] > array[i + 1])
 			{
 				swap_ints(array + i, array + i + 1);
-				array_print(array, size);
-				bubbly = false;
+				print_array(array, size);
+				bub = false;
 			}
 		}
-		len--;
+		l--;
 	}
 }

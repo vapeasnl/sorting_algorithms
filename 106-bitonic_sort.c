@@ -1,5 +1,5 @@
 /*
- * File: 106-bitonic_sort.c
+ * File: 106-s_bitonic.c
  * Auth: Brennan D Baraban
  */
 
@@ -9,7 +9,7 @@ void swap_ints(int *a, int *b);
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 		char flow);
 void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow);
-void bitonic_sort(int *array, size_t size);
+void s_bitonic(int *array, size_t size);
 
 /**
  * swap_ints - Swap two integers in an array.
@@ -67,19 +67,19 @@ void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
 	if (seq > 1)
 	{
 		printf("Merging [%lu/%lu] (%s):\n", seq, size, str);
-		print_array(array + start, seq);
+		array_print(array + start, seq);
 
 		bitonic_seq(array, size, start, cut, UP);
 		bitonic_seq(array, size, start + cut, cut, DOWN);
 		bitonic_merge(array, size, start, seq, flow);
 
 		printf("Result [%lu/%lu] (%s):\n", seq, size, str);
-		print_array(array + start, seq);
+		array_print(array + start, seq);
 	}
 }
 
 /**
- * bitonic_sort - Sort an array of integers in ascending
+ * s_bitonic - Sort an array of integers in ascending
  *                order using the bitonic sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -87,7 +87,7 @@ void bitonic_seq(int *array, size_t size, size_t start, size_t seq, char flow)
  * Description: Prints the array after each swap. Only works for
  * size = 2^k where k >= 0 (ie. size equal to powers of 2).
  */
-void bitonic_sort(int *array, size_t size)
+void s_bitonic(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;

@@ -2,7 +2,7 @@
 
 int get_max(int *array, int size);
 void radix_counting_sort(int *array, size_t size, int sig, int *buff);
-void radix_sort(int *array, size_t size);
+void s_radix(int *array, size_t size);
 
 /**
  * get_max - Get the maximum value in an array of integers.
@@ -54,7 +54,7 @@ void radix_counting_sort(int *array, size_t size, int sig, int *buff)
 }
 
 /**
- * radix_sort - Sort an array of integers in ascending
+ * s_radix - Sort an array of integers in ascending
  *              order using the radix sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -62,7 +62,7 @@ void radix_counting_sort(int *array, size_t size, int sig, int *buff)
  * Description: Implements the LSD radix sort algorithm. Prints
  * the array after each significant digit increase.
  */
-void radix_sort(int *array, size_t size)
+void s_radix(int *array, size_t size)
 {
 	int max, sig, *buff;
 
@@ -77,7 +77,7 @@ void radix_sort(int *array, size_t size)
 	for (sig = 1; max / sig > 0; sig *= 10)
 	{
 		radix_counting_sort(array, size, sig, buff);
-		print_array(array, size);
+		array_print(array, size);
 	}
 
 	free(buff);

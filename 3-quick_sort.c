@@ -3,7 +3,7 @@
 void swap_ints(int *a, int *b);
 int lomuto_partition(int *array, size_t size, int left, int right);
 void lomuto_sort(int *array, size_t size, int left, int right);
-void quick_sort(int *array, size_t size);
+void s_quick(int *array, size_t size);
 
 /**
  * swap_ints - Swap two integers in an array.
@@ -41,7 +41,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 			if (above < below)
 			{
 				swap_ints(array + below, array + above);
-				print_array(array, size);
+				array_print(array, size);
 			}
 			above++;
 		}
@@ -50,7 +50,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 	if (array[above] > *pivot)
 	{
 		swap_ints(array + above, pivot);
-		print_array(array, size);
+		array_print(array, size);
 	}
 
 	return (above);
@@ -78,7 +78,7 @@ void lomuto_sort(int *array, size_t size, int left, int right)
 }
 
 /**
- * quick_sort - Sort an array of integers in ascending
+ * s_quick - Sort an array of integers in ascending
  *              order using the quicksort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -86,7 +86,7 @@ void lomuto_sort(int *array, size_t size, int left, int right)
  * Description: Uses the Lomuto partition scheme. Prints
  *              the array after each swap of two elements.
  */
-void quick_sort(int *array, size_t size)
+void s_quick(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;

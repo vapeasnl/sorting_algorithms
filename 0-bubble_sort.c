@@ -21,7 +21,7 @@ void swap_ints(int *a, int *b)
  *
  * Description: Prints the array after each swap.
  */
-void bubble_sort(int *array, size_t size)
+void s_bubble(int *array, size_t size)
 {
 	size_t i, len = size;
 	bool bubbly = false;
@@ -37,7 +37,7 @@ void bubble_sort(int *array, size_t size)
 			if (array[i] > array[i + 1])
 			{
 				swap_ints(array + i, array + i + 1);
-				print_array(array, size);
+				array_print(array, size);
 				bubbly = false;
 			}
 		}

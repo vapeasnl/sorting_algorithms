@@ -28,7 +28,7 @@ void swap_nodes(listint_t **h, listint_t **n1, listint_t *n2)
  *
  * Description: Prints the list after each swap.
  */
-void insertion_sort_list(listint_t **list)
+void s_insertlist(listint_t **list)
 {
 	listint_t *iter, *insert, *tmp;
 
@@ -42,7 +42,7 @@ void insertion_sort_list(listint_t **list)
 		while (insert != NULL && iter->n < insert->n)
 		{
 			swap_nodes(list, &insert, iter);
-			print_list((const listint_t *)*list);
+			list_print((const listint_t *)*list);
 		}
 	}
 }

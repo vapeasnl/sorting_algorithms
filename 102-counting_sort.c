@@ -28,7 +28,7 @@ int get_max(int *array, int size)
  *
  * Description: Prints the counting array after setting it up.
  */
-void counting_sort(int *array, size_t size)
+void s_counting(int *array, size_t size)
 {
 	int *count, *sorted, max, i;
 
@@ -52,7 +52,7 @@ void counting_sort(int *array, size_t size)
 		count[array[i]] += 1;
 	for (i = 0; i < (max + 1); i++)
 		count[i] += count[i - 1];
-	print_array(count, max + 1);
+	array_print(count, max + 1);
 
 	for (i = 0; i < (int)size; i++)
 	{

@@ -3,7 +3,7 @@
 void swap_ints(int *a, int *b);
 int hoare_partition(int *array, size_t size, int left, int right);
 void hoare_sort(int *array, size_t size, int left, int right);
-void quick_sort_hoare(int *array, size_t size);
+void s_quickhoare(int *array, size_t size);
 
 /**
  * swap_ints - Swap two integers in an array.
@@ -49,7 +49,7 @@ int hoare_partition(int *array, size_t size, int left, int right)
 		if (above < below)
 		{
 			swap_ints(array + above, array + below);
-			print_array(array, size);
+			array_print(array, size);
 		}
 	}
 
@@ -78,7 +78,7 @@ void hoare_sort(int *array, size_t size, int left, int right)
 }
 
 /**
- * quick_sort_hoare - Sort an array of integers in ascending
+ * s_quickhoare - Sort an array of integers in ascending
  *                    order using the quicksort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -86,7 +86,7 @@ void hoare_sort(int *array, size_t size, int left, int right)
  * Description: Uses the Hoare partition scheme. Prints
  * the array after each swap of two elements.
  */
-void quick_sort_hoare(int *array, size_t size)
+void s_quickhoare(int *array, size_t size)
 {
 	if (array == NULL || size < 2)
 		return;

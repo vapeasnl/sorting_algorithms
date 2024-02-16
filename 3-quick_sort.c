@@ -21,7 +21,7 @@ void swap_ints(int *a, int *b)
 
 /**
  * lomuto_partition - Order a subset of an array of integers according to
- *                    the lomuto partition scheme (last element as pivot).
+ *                    the lomuto partition scheme (last element as flip).
  * @array: The array of integers.
  * @size: The size of the array.
  * @left: The starting index of the subset to order.
@@ -31,29 +31,29 @@ void swap_ints(int *a, int *b)
  */
 int lomuto_partition(int *array, size_t size, int left, int right)
 {
-	int *pivot, above, below;
+	int *flip, up, down;
 
-	pivot = array + right;
-	for (above = below = left; below < right; below++)
+	flip = array + right;
+	for (up = down = left; down < right; down++)
 	{
-		if (array[below] < *pivot)
+		if (array[down] < *flip)
 		{
-			if (above < below)
+			if (up < down)
 			{
-				swap_ints(array + below, array + above);
+				swap_ints(array + down, array + up);
 				print_array(array, size);
 			}
-			above++;
+			up++;
 		}
 	}
 
-	if (array[above] > *pivot)
+	if (array[up] > *flip)
 	{
-		swap_ints(array + above, pivot);
+		swap_ints(array + up, flip);
 		print_array(array, size);
 	}
 
-	return (above);
+	return (up);
 }
 
 /**

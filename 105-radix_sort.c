@@ -34,19 +34,19 @@ int get_max(int *array, int size)
  */
 void radix_counting_sort(int *array, size_t size, int sig, int *buff)
 {
-	int count[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	int cnt[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	size_t i;
 
 	for (i = 0; i < size; i++)
-		count[(array[i] / sig) % 10] += 1;
+		cnt[(array[i] / sig) % 10] += 1;
 
 	for (i = 0; i < 10; i++)
-		count[i] += count[i - 1];
+		cnt[i] += cnt[i - 1];
 
 	for (i = size - 1; (int)i >= 0; i--)
 	{
-		buff[count[(array[i] / sig) % 10] - 1] = array[i];
-		count[(array[i] / sig) % 10] -= 1;
+		buff[cnt[(array[i] / sig) % 10] - 1] = array[i];
+		cnt[(array[i] / sig) % 10] -= 1;
 	}
 
 	for (i = 0; i < size; i++)

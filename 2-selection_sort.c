@@ -22,9 +22,9 @@ void swap_ints(int *a, int *b)
  *
  * Description: Prints the array after each swap.
  */
-void s_selection(int *array, size_t size)
+void selection_sort(int *array, size_t size)
 {
-	int *m;
+	int *min;
 	size_t i, j;
 
 	if (array == NULL || size < 2)
@@ -32,13 +32,13 @@ void s_selection(int *array, size_t size)
 
 	for (i = 0; i < size - 1; i++)
 	{
-		m = array + i;
+		min = array + i;
 		for (j = i + 1; j < size; j++)
-			m = (array[j] < *m) ? (array + j) : m;
+			min = (array[j] < *min) ? (array + j) : min;
 
-		if ((array + i) != m)
+		if ((array + i) != min)
 		{
-			swap_ints(array + i, m);
+			swap_ints(array + i, min);
 			print_array(array, size);
 		}
 	}

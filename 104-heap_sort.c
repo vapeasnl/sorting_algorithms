@@ -2,7 +2,7 @@
 
 void swap_ints(int *a, int *b);
 void max_heapify(int *array, size_t size, size_t base, size_t root);
-void s_heap(int *array, size_t size);
+void heap_sort(int *array, size_t size);
 
 /**
  * swap_ints - Swap two integers in an array.
@@ -41,13 +41,13 @@ void max_heapify(int *array, size_t size, size_t base, size_t root)
 	if (large != root)
 	{
 		swap_ints(array + root, array + large);
-		array_print(array, size);
+		print_array(array, size);
 		max_heapify(array, size, base, large);
 	}
 }
 
 /**
- * s_heap - Sort an array of integers in ascending
+ * heap_sort - Sort an array of integers in ascending
  *             order using the heap sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
@@ -55,7 +55,7 @@ void max_heapify(int *array, size_t size, size_t base, size_t root)
  * Description: Implements the sift-down heap sort
  * algorithm. Prints the array after each swap.
  */
-void s_heap(int *array, size_t size)
+void heap_sort(int *array, size_t size)
 {
 	int i;
 
@@ -68,7 +68,7 @@ void s_heap(int *array, size_t size)
 	for (i = size - 1; i > 0; i--)
 	{
 		swap_ints(array, array + i);
-		array_print(array, size);
+		print_array(array, size);
 		max_heapify(array, size, i, 0);
 	}
 }

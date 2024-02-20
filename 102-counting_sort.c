@@ -28,41 +28,41 @@ int get_max(int *array, int size)
  *
  * Description: Prints the counting array after setting it up.
  */
-void s_counting(int *array, size_t size)
+void counting_sort(int *array, size_t size)
 {
-	int *cnt, *srtd, max, i;
+	int *count, *sorted, max, i;
 
 	if (array == NULL || size < 2)
 		return;
 
-	srtd = malloc(sizeof(int) * size);
-	if (srtd == NULL)
+	sorted = malloc(sizeof(int) * size);
+	if (sorted == NULL)
 		return;
 	max = get_max(array, size);
-	cnt = malloc(sizeof(int) * (max + 1));
-	if (cnt == NULL)
+	count = malloc(sizeof(int) * (max + 1));
+	if (count == NULL)
 	{
-		free(srtd);
+		free(sorted);
 		return;
 	}
 
 	for (i = 0; i < (max + 1); i++)
-		cnt[i] = 0;
+		count[i] = 0;
 	for (i = 0; i < (int)size; i++)
-		cnt[array[i]] += 1;
+		count[array[i]] += 1;
 	for (i = 0; i < (max + 1); i++)
-		cnt[i] += cnt[i - 1];
-	print_array(cnt, max + 1);
+		count[i] += count[i - 1];
+	print_array(count, max + 1);
 
 	for (i = 0; i < (int)size; i++)
 	{
-		srtd[cnt[array[i]] - 1] = array[i];
-		cnt[array[i]] -= 1;
+		sorted[count[array[i]] - 1] = array[i];
+		count[array[i]] -= 1;
 	}
 
 	for (i = 0; i < (int)size; i++)
-		array[i] = srtd[i];
+		array[i] = sorted[i];
 
-	free(srtd);
-	free(cnt);
+	free(sorted);
+	free(count);
 }

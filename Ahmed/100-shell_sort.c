@@ -15,34 +15,34 @@ void swap_ints(int *a, int *b)
 }
 
 /**
- * s_shell - Sort an array of integers in ascending
+ * shell_sort - Sort an array of integers in ascending
  *              order using the shell sort algorithm.
  * @array: An array of integers.
  * @size: The size of the array.
  *
  * Description: Uses the Knuth interval sequence.
  */
-void s_shell(int *array, size_t size)
+void shell_sort(int *array, size_t size)
 {
-	size_t sp, i, j;
+	size_t gap, i, j;
 
 	if (array == NULL || size < 2)
 		return;
 
-	for (sp = 1; sp < (size / 3);)
-		sp = sp * 3 + 1;
+	for (gap = 1; gap < (size / 3);)
+		gap = gap * 3 + 1;
 
-	for (; sp >= 1; sp /= 3)
+	for (; gap >= 1; gap /= 3)
 	{
-		for (i = sp; i < size; i++)
+		for (i = gap; i < size; i++)
 		{
 			j = i;
-			while (j >= sp && array[j - sp] > array[j])
+			while (j >= gap && array[j - gap] > array[j])
 			{
-				swap_ints(array + j, array + (j - sp));
-				j -= sp;
+				swap_ints(array + j, array + (j - gap));
+				j -= gap;
 			}
 		}
-		array_print(array, size);
+		print_array(array, size);
 	}
 }

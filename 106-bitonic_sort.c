@@ -36,18 +36,18 @@ void swap_ints(int *a, int *b)
 void bitonic_merge(int *array, size_t size, size_t start, size_t seq,
 		char flow)
 {
-	size_t i, jump = seq / 2;
+	size_t i, j = seq / 2;
 
 	if (seq > 1)
 	{
-		for (i = start; i < start + jump; i++)
+		for (i = start; i < start + j; i++)
 		{
-			if ((flow == UP && array[i] > array[i + jump]) ||
-			    (flow == DOWN && array[i] < array[i + jump]))
-				swap_ints(array + i, array + i + jump);
+			if ((flow == UP && array[i] > array[i + j]) ||
+			    (flow == DOWN && array[i] < array[i + j]))
+				swap_ints(array + i, array + i + j);
 		}
-		bitonic_merge(array, size, start, jump, flow);
-		bitonic_merge(array, size, start + jump, jump, flow);
+		bitonic_merge(array, size, start, j, flow);
+		bitonic_merge(array, size, start + j, j, flow);
 	}
 }
 

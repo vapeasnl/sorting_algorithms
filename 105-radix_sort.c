@@ -8,6 +8,7 @@ void radix_sort(int *array, size_t size);
  * get_max - Get the maximum value in array.
  * @array: array.
  * @size: size.
+ * Return: max.
  */
 int get_max(int *array, int size)
 {
@@ -23,7 +24,7 @@ int get_max(int *array, int size)
 }
 
 /**
- * radix_counting_sort - Sort the significant digits of array in ascending order.
+ * radix_counting_sort - Sort the significant digits of array.
  * @array: array.
  * @size: size.
  * @sig: significant digit to sort on.
